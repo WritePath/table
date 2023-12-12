@@ -58,7 +58,8 @@ export default class TableBlock {
       i: true,
       del: true,
       p: true,
-      a: true
+      a: true,
+      mark: true
     }
   }
 
@@ -170,8 +171,8 @@ export default class TableBlock {
 
   /**
    * A helper to get config value.
-   * 
-   * @param {string} configName - the key to get from the config. 
+   *
+   * @param {string} configName - the key to get from the config.
    * @param {any} defaultValue - default value if config doesn't have passed key
    * @param {object} savedData - previously saved data. If passed, the key will be got from there, otherwise from the config
    * @returns {any} - config value.
@@ -186,7 +187,7 @@ export default class TableBlock {
     return this.config && this.config[configName] ? this.config[configName] : defaultValue;
   }
 
-  /**  
+  /**
    * Table onPaste configuration
    *
    * @public
@@ -208,12 +209,12 @@ export default class TableBlock {
 
     /** Get all rows from the table */
     const rows = Array.from(table.querySelectorAll('tr'));
-    
+
     /** Generate a content matrix */
     const content = rows.map((row) => {
       /** Get cells from row */
       const cells = Array.from(row.querySelectorAll('th, td'))
-      
+
       /** Return cells content */
       return cells.map((cell) => cell.innerHTML);
     });
